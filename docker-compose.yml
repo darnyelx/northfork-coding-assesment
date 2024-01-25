@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  phr:
+  app:
     build:
       context: .
     volumes:
@@ -16,7 +16,7 @@ services:
       # - .:/var/www/html
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - phr
+      - app
 
   mysql:
     image: mysql:latest

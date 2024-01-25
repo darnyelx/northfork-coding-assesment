@@ -20,43 +20,16 @@ use App\Entity\User;
 class UserController extends AbstractController
 {
     #[Route('', methods: ['GET'])]
-    #[SWG\Get(
-        description: "Get the list of users",
-        responses: [
-            '200' => [
-                'description' => 'Successful response',
-                'content' => ['application/json' => [
-                    'schema' => ['type' => 'array', 'items' => ['type' => 'object']],
-                ]],
-            ],
-        ],
-        tags: ['Users'],
-    )]
+ 
     public function getUsers(MessageBusInterface $messageBus): JsonResponse
     {
         $query = new GetUserListQuery();
-        $users = $messageBus->dispatch($query);
+        $users =  $messageBus->dispatch($query);
 
         return $this->json($users);
     }
 
     #[Route('/{id}', methods: ['GET'])]
-    // #[SWG\Get(
-    //     description: "Get a single user by ID",
-    //     responses: [
-    //         '200' => [
-    //             'description' => 'Successful response',
-    //             'content' => ['application/json' => [
-    //                 'schema' => ['type' => 'object'],
-    //             ]],
-    //         ],
-    //         '404' => [
-    //             'description' => 'User not found',
-    //             'content' => ['application/json' => []],
-    //         ],
-    //     ],
-    //     tags: ['Users'],
-    // )]
     public function getSingleUser(int $id, MessageBusInterface $messageBus): JsonResponse
     {
         $query = new GetUserQuery($id);

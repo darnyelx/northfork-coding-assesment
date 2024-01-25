@@ -18,7 +18,7 @@ class GetUserListQueryHandler
         $this->entityManager = $entityManager;
     }
 
-    public function __invoke(GetUserListQuery $query)
+    public function __invoke(GetUserListQuery $query):array
     {
         return $this->entityManager->getRepository(User::class)->findAll();
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests;
+namespace App\tests;
 
 use App\Command\CreateUserCommand;
 use PHPUnit\Framework\TestCase;

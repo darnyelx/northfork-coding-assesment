@@ -12,6 +12,7 @@ done
 
 >&2 echo "MySQL is up - executing migrations"
 php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load --no-interaction
 
 
 exec php-fpm
